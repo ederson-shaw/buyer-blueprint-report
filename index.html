@@ -3,35 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pre-Call &amp; Enrichment — Before → After</title>
-<meta name="description" content="What changed in the pre-call and enrichment: every comparison, before and after. Real artifacts on the left, what ships on the right.">
+<title>Pre-Call — the data, then → now</title>
+<meta name="description" content="The pre-call data existed all along. It was wrong. Same fields, compared: what they said then, what they say now.">
 <!--
   ============================================================================
-  CHANGE REPORT · PRE-CALL + ENRICHMENT SCOPE ONLY (no live-call scope here)
+  CHANGE REPORT · SAME FIELDS, WRONG THEN, RIGHT NOW
   ----------------------------------------------------------------------------
-  SAMPLE DATA NOTICE + DATA-AGENT MANIFEST
-  Every block marked [SAMPLE] is a placeholder. The agent replacing them with
-  real data: read this manifest, then follow the private guide
-  (chris-timofi/buyer-blueprint-report-GUIDE.md). Do not touch anything else.
-
-  BLOCK ID              FIELD (precall output)                 RULE
-  #bp-technique         technique_selected                      pill text, uppercase
-  #bp-who               buyer name + company (CRM record)       one line each
-  #bp-decide            disc + ocean summary, as hypothesis     keep "as hypothesis"
-  #bp-arc               game_plan phases                        chips, keep numbers
-  #bp-objective         meeting_objective                       one clause
-  #bp-firstline         scriptMarkdown, first spoken line       THE STAR, biggest text
-  #bp-next              scriptMarkdown, second block            one line, starts "Next:"
-  #bp-openq             unknown fields (empty on record)        only what has NO source
-  #bp-qual              qualification_framework + evidence      count only
-  #row-soo              full record, opportunity 863da9eb…      replace all [sample]
-  #row-steve            full record, opportunity e901e149…      replace all [sample]
-  #row-jade             full record, opportunity 43ed1ab5…      replace all [sample]
-
-  Old-side content (dead state, build log, 50%/15%, wrong title, "when she
-  answers", "10 to 15 sellers", the ask) is REAL. Never edit it.
-  After regenerating: judge must pass 88/100 per buyer BEFORE [SAMPLE] chips
-  come off. Judge reports stay private.
+  DATA SOURCES (both real):
+  THEN — deployed stage record (David Dressler, Aug 25) + the Sep 9 morning
+         generation as judged in pitch-genius-tests/m1-lab/JULGAMENTO-v1.md.
+  NOW  — local live record, Sep 9 11:46 (precalls.call_script for the three
+         buyers). No invented content on the now-side. Judge score still pending.
+  DATA-AGENT MANIFEST (ids for real-data updates):
+  #fm-old / #fm-soo / #fm-steve / #fm-jade   first moves (old example leak vs 3 real)
+  #ask-old / #ask-now                        the memorized ask
+  #tech-row / #disc-row / #obj-row / #fmt-row  table rows, then vs now
+  Never edit THEN-side quotes. NOW-side updates only from the live record.
   ============================================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +32,6 @@
   --bad:#e11d48; --bad-soft:#fff5f5; --bad-line:#fecdd3;
   --chal:#e11d48; --chal-soft:#fff1f2; --chal-line:#fecdd3;
   --nepq:#7c3aed; --nepq-soft:#f5f3ff; --nepq-line:#ddd6fe;
-  --ok:#059669; --ok-soft:#ecfdf5; --ok-line:#a7f3d0;
   --warn:#b45309; --warn-soft:#fffbeb; --warn-line:#fde68a;
   --shadow:0 16px 40px -24px rgba(15,23,42,.22);
   --r:16px; --r-md:12px;
@@ -62,19 +48,14 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
 .brand .crumb{color:var(--ink2);font-weight:500}
 .badge{font-family:var(--mono);font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--warn);border:1px solid var(--warn-line);background:var(--warn-soft);border-radius:999px;padding:6px 13px;white-space:nowrap}
 
-/* hero: the page explains itself */
 .hero{margin-bottom:44px}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
 h1{font-family:var(--disp);font-size:clamp(30px,4.8vw,42px);line-height:1.1;margin:0 0 14px;font-weight:700;letter-spacing:-.5px}
-h1 .was{color:var(--ink3);text-decoration:line-through;text-decoration-color:rgba(225,29,72,.5);text-decoration-thickness:3px}
-h1 .now{background:var(--cta);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{color:var(--ink2);font-size:16px;max-width:60ch;margin:0}
+h1 em{font-style:normal;background:var(--cta);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--ink2);font-size:16px;max-width:62ch;margin:0}
 .lede b{color:var(--ink);font-weight:600}
-.pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.pillar{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:10px 16px;font-family:var(--disp);font-weight:600;font-size:14px}
-.pillar b{flex:none;font-size:15px}
+.src-note{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:14px}
 
-/* sections */
 .sec{margin-bottom:52px}
 .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
 .sec-n{font-family:var(--mono);font-size:13px;color:var(--teal);letter-spacing:1px;flex:none}
@@ -82,60 +63,21 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 .sec-sub{color:var(--ink2);font-size:15px;margin:0 0 20px;max-width:64ch}
 .sec-sub b{color:var(--ink);font-weight:600}
 
-/* before/after frame labels */
-.ba{display:grid;grid-template-columns:1fr 1.25fr;gap:16px;align-items:stretch}
-.ba-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
-.ba-lbl.was{color:var(--bad)}
-.ba-lbl.now{color:var(--teal)}
+/* ---------- THE TABLE ---------- */
+.fmt{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--stroke);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.fmt th{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;text-align:left;padding:14px 20px;border-bottom:1px solid var(--hairline);color:var(--ink3)}
+.fmt th.then{color:var(--bad)} .fmt th.now{color:var(--teal)}
+.fmt td{padding:16px 20px;vertical-align:top;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink2)}
+.fmt tr:last-child td{border-bottom:none}
+.fmt td.field{font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink);width:150px}
+.fmt td.then{background:var(--bad-soft);width:36%}
+.fmt td.now{background:var(--teal-soft);width:40%}
+.fmt q{quotes:"“" "”";color:var(--ink)}
+.fmt .smp{font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;color:var(--warn);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fmt .live{font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;color:var(--teal);background:var(--teal-soft);border:1px solid var(--teal-line);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fmt td .m{display:block;margin-top:6px;font-size:12px;color:var(--ink3)}
 
-/* dead card (before) */
-.dead{background:var(--bg);border:1px solid var(--stroke);border-radius:var(--r);padding:22px 26px;display:flex;flex-direction:column}
-.dead .who{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.dead .avatar{width:40px;height:40px;border-radius:11px;background:#e2e8f0;color:#64748b;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:15px;flex:none}
-.dead .bname{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--ink2)}
-.dead .bco{color:var(--ink3);font-size:13px}
-.dead .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.dead .pill{display:inline-flex;align-items:center;border:1px solid var(--stroke);border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--ink2);background:var(--card)}
-.dead .pill.warn{color:var(--ink2);border-color:var(--stroke);background:var(--card)}
-.dead .hintline{margin:auto 0 0;padding-top:14px;border-top:1px dashed var(--stroke);font-size:13px;color:var(--ink3)}
-.dead .src{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:12px}
-
-/* blueprint card (after) */
-.bp{background:var(--card);border:1px solid var(--teal-line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
-.bp-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 26px;border-bottom:1px solid var(--hairline)}
-.bp-top .avatar{width:44px;height:44px;border-radius:12px;background:var(--cta);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:17px;flex:none}
-.bp-top .who{margin-right:auto}
-.bp-top .bname{font-family:var(--disp);font-weight:700;font-size:18px;line-height:1.2}
-.bp-top .bco{color:var(--ink3);font-size:13.5px}
-.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.8px;padding:6px 12px;border-radius:999px;border:1px solid}
-.tag .d{width:7px;height:7px;border-radius:50%;background:currentColor}
-.tag.chal{color:var(--chal);border-color:var(--chal-line);background:var(--chal-soft)}
-.tag.nepq{color:var(--nepq);border-color:var(--nepq-line);background:var(--nepq-soft)}
-.smp{font-family:var(--mono);font-size:10px;letter-spacing:.6px;color:var(--warn);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:6px;padding:3px 8px;white-space:nowrap}
-.bp-star{padding:22px 26px 6px}
-.arc{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
-.stage{display:inline-flex;align-items:center;gap:7px;background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.18);border-radius:10px;padding:5px 11px;font-size:12.5px;color:var(--ink2)}
-.stage b{display:inline-flex;width:20px;height:20px;border-radius:7px;background:var(--teal);color:#fff;font-family:var(--disp);font-size:10.5px;align-items:center;justify-content:center;flex:none}
-.stage.on{background:var(--teal-soft);border-color:var(--teal);color:var(--ink)}
-.obj{font-size:14px;color:var(--ink2);margin:0 0 16px}
-.obj b{color:var(--ink);font-weight:600}
-.say{border-left:4px solid var(--teal);padding:6px 0 6px 16px;margin:0 0 8px}
-.say p{margin:0;font-family:var(--disp);font-size:20px;font-weight:600;color:var(--ink);line-height:1.4;letter-spacing:-.2px}
-.say footer{font-size:13px;color:var(--ink3);margin-top:8px}
-.next{font-size:14.5px;color:var(--ink2);margin:0 0 20px;padding-left:20px}
-.next b{color:var(--ink);font-weight:600}
-.bp-quiet{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--hairline);margin-top:auto}
-.bp-col{padding:16px 26px 20px}
-.bp-col + .bp-col{border-left:1px solid var(--hairline)}
-.bp-lbl{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
-.bp-line{font-size:14px;color:var(--ink2);margin:0}
-.bp-line b{color:var(--ink);font-weight:600}
-.oq{display:flex;gap:8px;align-items:baseline;font-size:13px;color:var(--ink2);margin:5px 0}
-.oq .q{color:var(--ink);font-weight:500}
-.oq .s{color:var(--ink3);font-size:12px}
-.qual{font-size:12px;color:var(--ink3);margin:12px 0 0;padding-top:10px;border-top:1px solid var(--hairline)}
-
-/* script + enrichment pairs */
+/* ---------- deep pairs ---------- */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-bottom:16px}
 .cell{border-radius:var(--r);padding:20px 24px;display:flex;flex-direction:column}
 .cell .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
@@ -147,11 +89,20 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 .quote footer{font-size:12.5px;color:var(--ink3);margin-top:6px}
 .why{font-size:13.5px;color:var(--ink2);margin:auto 0 0;padding-top:10px;border-top:1px dashed rgba(15,23,42,.1)}
 .why b{font-weight:600;color:var(--ink)}
-.fact{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;color:var(--ink2);margin:0 0 8px}
-.chip{flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.6px;border-radius:6px;padding:3px 8px;margin-top:2px}
-.chip.hi{color:var(--teal);background:var(--card);border:1px solid var(--teal-line)}
-.mini-arc{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
-.mini-arc .stage{padding:4px 10px;font-size:12px}
+
+/* buyers strip (real first moves) */
+.brow{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 26px;margin-bottom:10px}
+.brow .bh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.brow .bname{font-family:var(--disp);font-weight:700;font-size:16.5px}
+.brow .bco{color:var(--ink3);font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.8px;padding:5px 11px;border-radius:999px;border:1px solid}
+.tag .d{width:7px;height:7px;border-radius:50%;background:currentColor}
+.tag.chal{color:var(--chal);border-color:var(--chal-line);background:var(--chal-soft);margin-left:auto}
+.tag.nepq{color:var(--nepq);border-color:var(--nepq-line);background:var(--nepq-soft);margin-left:auto}
+.brow .bq{font-size:15px;color:var(--ink2);margin:0}
+.brow .bq em{font-style:normal;color:var(--ink);font-weight:500}
+.brow .bmeta{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:8px}
+.brow .bmeta b{color:var(--ink2);font-weight:500}
 
 /* removals */
 .cut{list-style:none;margin:0;padding:0}
@@ -174,9 +125,14 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(max-width:760px){
-  .pair,.ba{grid-template-columns:1fr}
-  .bp-quiet{grid-template-columns:1fr}
-  .bp-col + .bp-col{border-left:none;border-top:1px solid var(--hairline)}
+  .pair{grid-template-columns:1fr}
+  .fmt{display:block}
+  .fmt thead{display:none}
+  .fmt tr{display:block;border-bottom:1px solid var(--hairline)}
+  .fmt td{display:block;width:auto !important;border-bottom:none;padding:10px 20px}
+  .fmt td.field{padding-top:16px}
+  .fmt td.then::before{content:"THEN";display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;color:var(--bad);margin-bottom:4px}
+  .fmt td.now::before{content:"NOW";display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;color:var(--teal);margin-bottom:4px}
   .top{flex-direction:column;align-items:flex-start;gap:12px}
   .cut li{grid-template-columns:1fr;gap:8px}
 }
@@ -186,209 +142,179 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
 <div class="wrap">
 
   <header class="top">
-    <div class="brand"><span class="dot"></span>PitchGenius <span class="crumb">· Pre-call &amp; enrichment, before → after</span></div>
-    <span class="badge">Sample data · preview</span>
+    <div class="brand"><span class="dot"></span>PitchGenius <span class="crumb">· Pre-call, then → now</span></div>
+    <span class="badge">Live records · quality judged pending</span>
   </header>
 
-  <!-- HERO: the page says what it is: a change report, compared. -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="eyebrow">Change report · pre-call &amp; enrichment</div>
-    <h1><span class="was">A document about the buyer.</span><br>Now, <span class="now">a brief that runs the call.</span></h1>
-    <p class="lede">This page shows what changed. Every section is a comparison: <b>the real thing the rep got before, next to what they get now.</b> The core change: <b>the method is chosen first, and the script is written inside it</b>, step by step, by code that enforces the order. Old side is untouched evidence. New side is what the app ships today, read straight from the record.</p>
-    <div class="pillars">
-      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">1</b>Technique chosen first, and locked</span>
-      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">2</b>Script written inside it</span>
-      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">3</b>One page, every fact with a receipt</span>
+    <div class="eyebrow">Change report · the pre-call data</div>
+    <h1>The data was always there. <em>It was just wrong.</em></h1>
+    <p class="lede">The pre-call never lacked data. Every field below existed then and exists now. What changed is that the values stopped being invented, templated or borrowed from the prompt. <b>Same fields, side by side: what they said then, what they say now.</b></p>
+    <p class="src-note">then: deployed record (Aug 25) + the Sep 9 morning generation, as judged · now: live record, Sep 9 11:46</p>
+  </section>
+
+  <!-- ================= 01 · THE FIELDS ================= -->
+  <section class="sec">
+    <div class="sec-h"><span class="sec-n">01</span><h2>Same fields, then → now</h2></div>
+    <p class="sec-sub">Six fields the product already had. Read one row as one before-and-after.</p>
+
+    <table class="fmt">
+      <thead><tr><th></th><th class="then">Then · what it said</th><th class="now">Now · what it says</th></tr></thead>
+      <tbody>
+        <tr id="fm-row">
+          <td class="field">First move</td>
+          <td class="then"><q>When he answers what made the call worth taking, name it back once and hold it for the close.</q><span class="m">The prompt's own worked example, shipped as the first move of every buyer. Confirmed in the deployed record, months apart.</span></td>
+          <td class="now"><q>Soo, thanks for making the time. Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…</q><span class="live">LIVE</span><span class="m">Three buyers, three different first moves, each from the buyer's own record.</span></td>
+        </tr>
+        <tr id="ask-row">
+          <td class="field">The ask</td>
+          <td class="then"><q>A focused group of 10 to 15 sellers</q> — proposed to a founder who works alone. Word for word identical between two buyers.<span class="m">A checkable lie at the highest-stakes moment of the call.</span></td>
+          <td class="now"><q>Which of her ventures (The Ark, ARIA, or LoneStarAscent.AI) she would consider for a pilot.</q><span class="live">LIVE</span><span class="m">Scoped to what the record supports. No headcount invented.</span></td>
+        </tr>
+        <tr id="tech-row">
+          <td class="field">Technique footprint</td>
+          <td class="then">"CHALLENGER" as a tag on generic text. 18 lines identical between a Challenger buyer and an NEPQ buyer.<span class="m">The technique changed the label, never the words.</span></td>
+          <td class="now">Two different ladders in the record: Challenger runs Context → Commitment, NEPQ runs Connect → Commitment. Identical lines between buyers, measured this morning: <b>zero, in all three pairs.</b><span class="live">LIVE</span></td>
+        </tr>
+        <tr id="obj-row">
+          <td class="field">Objective</td>
+          <td class="then"><q>Secure a controlled paid pilot or a clearly defined technical and commercial next step.</q><span class="m">The same formula, deployed across buyers, months apart.</span></td>
+          <td class="now"><q>Name which of her ventures she would pilot first</q> · <q>what would need to be proven</q> · three buyers, three different objectives.<span class="live">LIVE</span></td>
+        </tr>
+        <tr id="choice-row">
+          <td class="field">Technique choice</td>
+          <td class="then">Scores existed and were decorative. The script stayed identical under any tag; the stated reason was template prose about a "commercially-minded individual."<span class="m">Right answer chosen, then ignored.</span></td>
+          <td class="now">Challenger 85 for Soo, 90 for Steve, NEPQ 85 for Jade — different winners, real margins, and the reason cites the buyer: Jade "has been sold to extensively… NEPQ lets the buyer articulate their own problems."<span class="live">LIVE</span></td>
+        </tr>
+        <tr id="disc-row">
+          <td class="field">DISC read</td>
+          <td class="then">Near-default numbers for different humans: two records, months apart, differ by one axis point.<span class="m">The read discriminated nothing.</span></td>
+          <td class="now">Soo D80·I70 · Steve D85·I70 · Jade I75 — three different centers, from their own records.<span class="live">LIVE</span></td>
+        </tr>
+        <tr id="fmt-row">
+          <td class="field">Format</td>
+          <td class="then">11,177 characters. Moves as untagged narration, quotes in one run, the opening buried forty lines down.<span class="m">Read it or fail. No skimming.</span></td>
+          <td class="now">First move on top, lines grouped under the stage they serve, four named unknowns. Skimmable in ninety seconds.<span class="live">LIVE</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= 02 · FIRST MOVE IN FULL ================= -->
+  <section class="sec">
+    <div class="sec-h"><span class="sec-n">02</span><h2>The first move, in full</h2></div>
+    <p class="sec-sub">The clearest single failure, and the clearest fix. Then: one line for everyone, borrowed from the prompt itself. Now: three lines, one per buyer, each anchored in their record.</p>
+
+    <div class="pair">
+      <div class="cell was" id="fm-old">
+        <div class="lbl">Then · every buyer, for months</div>
+        <p class="quote">"When he answers what made the call worth taking, name it back once and hold it for the close."<footer>Deployed record, Aug 25. Judged generation, Sep 9. Same first line.</footer></p>
+        <p class="why"><b>What was wrong:</b> it is the prompt's demonstration sentence with the pronoun swapped. Not written for anyone.</p>
+      </div>
+      <div class="cell now">
+        <div class="lbl">Now · from each record <span style="color:var(--teal)">· live</span></div>
+        <p class="quote">Soo: "Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…"</p>
+        <p class="quote">Steve: "Given your background at MIT, Monster, and now building LoneStarAscent.AI…"<footer>Jade: "From Juicebox to Google Gemini, and especially your success with those newsletter brands."</footer></p>
+        <p class="why"><b>Why it is right:</b> three different humans, three different openings, each checkable against the buyer's own profile.</p>
+      </div>
+    </div>
+
+    <div class="brow">
+      <div class="bh"><span class="bname">Soo Horobin</span><span class="bco">The Ark · founder, runs it alone</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
+      <p class="bq"><em>Challenger arc:</em> Context → Insight/Reframe → Business Impact → New Way → Solution Relevance → Commitment. Twelve spoken lines, four named unknowns.</p>
+      <div class="bmeta">objective: name which venture to pilot · read: <b>D80·I70</b></div>
+    </div>
+    <div class="brow">
+      <div class="bh"><span class="bname">Steve Deeb</span><span class="bco">LoneStarAscent.AI · technical founder</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
+      <p class="bq"><em>Same method, different words.</em> Eleven spoken lines. Zero lines shared with Soo.</p>
+      <div class="bmeta">objective: what would need to be proven · read: <b>D85·I70</b></div>
+    </div>
+    <div class="brow">
+      <div class="bh"><span class="bname">Jade Bodkhe</span><span class="bco">Lonestar Ascent AI · same company as Steve</span><span class="tag nepq"><span class="d"></span>NEPQ</span></div>
+      <p class="bq"><em>NEPQ arc, her own ladder:</em> Connect → Situation → Problem Awareness → Solution Awareness → Consequence → Commitment. Questions lead. No teaching pitch.</p>
+      <div class="bmeta">objective: what would need to be proven · read: <b>I75</b></div>
     </div>
   </section>
 
-  <!-- ================= 01 · THE BRIEF ================= -->
+  <!-- ================= 03 · THE RIGHT METHOD ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">01</span><h2>The buyer brief, before → after</h2></div>
-    <p class="sec-sub">Same buyer, same CRM import. Left: everything the rep saw before. Right: the brief now. The order is the product: technique is picked first and locked, then every block of the script serves one step of it. Read the big line first.</p>
+    <div class="sec-h"><span class="sec-n">03</span><h2>The right method for each buyer</h2></div>
+    <p class="sec-sub">Technique-first only counts if the technique is chosen well and then actually used. Both halves now have receipts: the scores discriminate, the reason cites the buyer, and the script runs the winner.</p>
 
-    <div class="ba">
-      <div>
-        <div class="ba-lbl was">Before · the whole screen</div>
-        <div class="dead" id="dead-soo">
-          <div class="src">Source: CRM import</div>
-          <div class="who">
-            <div class="avatar">S</div>
-            <div><div class="bname">Soo Horobin</div><div class="bco">The Ark</div></div>
-          </div>
-          <div class="pills"><span class="pill warn">No CRM stage</span><span class="pill warn">Not diagnosed yet</span><span class="pill">CHAL</span></div>
-          <p class="hintline">"Add buyer notes to start ranking." The rep's only instruction. Nothing about who she is, what to ask, or where the call should end.</p>
-        </div>
-      </div>
-      <div>
-        <div class="ba-lbl now">After · the same buyer <span class="smp" style="margin-left:8px">from the app, today</span></div>
-        <div class="bp">
-          <div class="bp-top">
-            <div class="avatar">S</div>
-            <div class="who" id="bp-who">
-              <div class="bname">Soo Horobin</div>
-              <div class="bco">The Ark · founder, runs it alone</div>
-            </div>
-            <span class="tag chal" id="bp-technique"><span class="d"></span>Technique Match · Challenger</span>
-            <span class="smp" style="color:var(--teal);border-color:var(--teal-line);background:var(--teal-soft)">LIVE · IN THE APP TODAY</span>
-          </div>
-          <div class="bp-star">
-            <div class="arc" id="bp-arc">
-              <span class="stage"><b>1</b>Context</span><span class="stage on"><b>2</b>Insight / reframe</span><span class="stage"><b>3</b>Business impact</span><span class="stage"><b>4</b>New way</span><span class="stage"><b>5</b>Solution relevance</span><span class="stage"><b>6</b>Commitment</span>
-            </div>
-            <p class="obj" id="bp-objective">Objective: <b>get Soo to name which of her ventures she would pilot PitchGenius with first.</b></p>
-            <div class="say" id="bp-firstline">
-              <p>"Soo, thanks for making the time. Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI, I wanted to understand how you currently approach the selling side."</p>
-              <footer>First move, labeled, first thing on the screen. Real, from the app.</footer>
-            </div>
-            <p class="next" id="bp-next"><b>Then:</b> every line below is grouped under the stage it serves. Context, Insight/Reframe, Business Impact, New Way, Solution Relevance, Commitment.</p>
-          </div>
-          <div class="bp-quiet">
-            <div class="bp-col">
-              <div class="bp-lbl">How she decides · hypothesis</div>
-              <p class="bp-line" id="bp-decide"><b>Evidence over claims.</b> Allergic to generic pitches. Read: <b>D80 · I70</b> (record), hypothesis, from her own posts.</p>
-              <p class="qual" id="bp-qual"><b>Qualification:</b> MEDDPICC, 0 of 8 evidenced. A separate checklist, not part of the script.</p>
-            </div>
-            <div class="bp-col">
-              <div class="bp-lbl">Open questions · nothing on record</div>
-              <div id="bp-openq">
-                <div class="oq"><span class="q">What does her typical deal cycle look like?</span></div>
-                <div class="oq"><span class="q">How does she decide a deal moves stages?</span></div>
-                <div class="oq"><span class="q">What evidence makes a buyer "ready"?</span></div>
-                <div class="oq"><span class="s">4 named unknowns, from the record. The rep asks them on the call.</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="brow">
+      <div class="bh"><span class="bname">Soo Horobin</span><span class="bco">The Ark</span><span class="tag chal"><span class="d"></span>Challenger 85 · 2nd SPIN 70</span></div>
+      <p class="bq"><em>Why, from her record:</em> "A visionary founder with a strong focus on GTM strategy and RevOps, indicating a commercial mindset open to new insights and challenging existing norms."</p>
+      <div class="bmeta">challenger 85 · hybrid 75 · spin 70 · nepq 60 — and the script runs all six Challenger stages</div>
+    </div>
+    <div class="brow">
+      <div class="bh"><span class="bname">Steve Deeb</span><span class="bco">LoneStarAscent.AI</span><span class="tag chal"><span class="d"></span>Challenger 90 · 2nd NEPQ 75</span></div>
+      <p class="bq"><em>Why, from his record:</em> "A confident, commercially-minded founder with a strong technical background… will respond well to a reframe of his perception."</p>
+      <div class="bmeta">challenger 90 · nepq 75 · hybrid 70 · spin 60 — same company as Jade, different method</div>
+    </div>
+    <div class="brow">
+      <div class="bh"><span class="bname">Jade Bodkhe</span><span class="bco">Lonestar Ascent AI</span><span class="tag nepq"><span class="d"></span>NEPQ 85 · 2nd hybrid 75</span></div>
+      <p class="bq"><em>Why, from her record:</em> "A founding marketer, growth specialist and newsletter entrepreneur… she has been sold to extensively and is likely skeptical of traditional pitches. NEPQ lets the buyer articulate their own problems."</p>
+      <div class="bmeta">nepq 85 · hybrid 75 · challenger 70 · spin 60 — questions lead, no teaching pitch</div>
     </div>
   </section>
 
-  <!-- ================= 02 · THE SCRIPT ================= -->
+  <!-- ================= 04 · THE ASK ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">02</span><h2>The script, before → after</h2></div>
-    <p class="sec-sub">Left quotes are real, shipped to buyers. Right is the shape that replaces them.</p>
-
+    <div class="sec-h"><span class="sec-n">04</span><h2>The ask, in full</h2></div>
+    <p class="sec-sub">The line the rep memorizes. Then: an invented sales org. Now: scoped to the record.</p>
     <div class="pair">
-      <div class="cell was">
-        <div class="lbl">Before · the opening, any buyer</div>
-        <p class="quote">"Soo, thanks for making the time. Rather than a generic presentation, I want to understand how you build revenue from zero, what happens when you're engaging buyers, and how you know a venture is truly progressing. Does that sound reasonable?"<footer>One opening sentence, forty-seven words. The old format's stored script.</footer></p>
-        <p class="why">The rep's first line, buried forty lines deep in a 7,670-character document.</p>
+      <div class="cell was" id="ask-old">
+        <div class="lbl">Then · real output, all three buyers</div>
+        <p class="quote">"I would recommend one frontline manager, a focused group of 10 to 15 sellers, defined opportunities, your existing process, and mutually agreed success criteria."<footer>Her own file says she runs three ventures alone.</footer></p>
+        <p class="why"><b>What was wrong:</b> headcount invented, identical between two buyers, checkable from a LinkedIn title in five seconds.</p>
       </div>
-      <div class="cell now">
-        <div class="lbl">After · the opening [SAMPLE]</div>
-        <p class="quote">The same opener, labeled <b>First move</b>, on top, followed by lines grouped under Context.<footer>Structure is the fix: what to say first is the first thing on the screen.</footer></p>
-        <p class="why"><b>Why it is better:</b> no archaeology. First move, then stages, then unknowns. Skimmable in ninety seconds.</p>
-      </div>
-    </div>
-
-    <div class="pair">
-      <div class="cell was">
-        <div class="lbl">Before · the numbers</div>
-        <p class="quote">"What if we could show you how to reduce the time spent on manual prep by 50% and increase your partnership close rates by 15%?"</p>
-        <p class="why">Invented. Identical pitch for every buyer.</p>
-      </div>
-      <div class="cell now">
-        <div class="lbl">After · the numbers [SAMPLE]</div>
-        <p class="fact"><span class="chip hi">RULE</span><span>She works alone. Any pilot must fit one person. Source: her own profile.</span></p>
-        <p class="why"><b>Why it is better:</b> no receipt, no sentence. Numbers cite where they came from.</p>
-      </div>
-    </div>
-
-    <div class="pair">
-      <div class="cell was">
-        <div class="lbl">Before · the shape</div>
-        <p class="quote">[Context] When Soo describes her current GTM strategy, ask how she ensures consistency across her different ventures.<footer>[Insight/Reframe] When Soo describes her current sales process, reframe it as tracking mechanical progress, not buyer psychology.</footer></p>
-        <p class="why">22 moves in this shape, then 19 quotes in one wall, 6 headers over 77 lines. The stage labels exist. The format buries them. Nothing is skimmable.</p>
-      </div>
-      <div class="cell now">
-        <div class="lbl">After · technique-first [SAMPLE]</div>
-        <div class="mini-arc">
-          <span class="stage"><b>1</b>Context</span><span class="stage"><b>2</b>Insight / reframe</span><span class="stage"><b>3</b>Business impact</span><span class="stage"><b>4</b>New way</span><span class="stage"><b>5</b>Solution relevance</span><span class="stage"><b>6</b>Commitment</span>
-        </div>
-        <p class="quote" style="margin-top:6px">Business Impact, line one: <b>"When a deal you were counting on stalls because the buyer turned out to read differently than you expected, where does that damage show up first?"</b><footer>Real, from the app. Twelve spoken lines under six stages, plus four named unknowns.</footer></p>
-        <p class="why"><b>Why it is better:</b> the technique is picked first and locked by code. Every line serves one of its steps. NEPQ buyers get their own ladder: Connect, Situation, Problem Awareness, Solution Awareness, Consequence, Commitment.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 03 · ENRICHMENT ================= -->
-  <section class="sec">
-    <div class="sec-h"><span class="sec-n">03</span><h2>Enrichment, before → after</h2></div>
-    <p class="sec-sub">The brief is only as good as the person underneath it. Where this started: a rep opening a brief about <b>a different person with the same name</b>.</p>
-
-    <div class="pair">
-      <div class="cell was">
-        <div class="lbl">Before · real output</div>
-        <p class="quote">"Group Chief Revenue Officer &amp; Head of Partnerships" — a title belonging to someone else with the same name. The whole brief described the wrong career.</p>
-        <p class="why">Tracing each wrong fact later took a full audit of a recorded call.</p>
-      </div>
-      <div class="cell now">
-        <div class="lbl">Now</div>
-        <p class="fact"><span class="chip hi">RULE</span><span>The CRM fields drive every search: name, company and title together. A bare name never triggers research.</span></p>
-        <p class="why"><b>Why it holds:</b> wrong-person is designed out at the input, not caught at the output.</p>
-      </div>
-    </div>
-
-    <div class="pair">
-      <div class="cell was">
-        <div class="lbl">Before · real state</div>
-        <p class="quote">"Only your workspace owner or manager can connect to data sources." A rep accepting an invite inherited one shared connection and ten thousand leads that were not theirs.</p>
-        <p class="why">No step in the invite flow asked the rep to connect their own seat.</p>
-      </div>
-      <div class="cell now">
-        <div class="lbl">Now · shipped</div>
-        <p class="fact"><span class="chip hi">SHIPPED</span><span>Every rep connects their own CRM seat during invite setup. The picker leads with the team's CRM. Only their leads come in.</span></p>
-        <p class="why"><b>Why it holds:</b> one seat, one rep, their own leads.</p>
+      <div class="cell now" id="ask-now">
+        <div class="lbl">Now · from the record <span style="color:var(--teal)">· live</span></div>
+        <p class="quote">"Which of your ventures — The Ark, ARIA, or LoneStarAscent.AI — would be the most impactful place to test this, and what would need to be true for you to approve it?"</p>
+        <p class="why"><b>Why it is right:</b> the ask names her actual ventures and defers the shape of the pilot to her answer. Nothing asserted that the record does not support.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= 04 · REMOVED ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">04</span><h2>What was removed, on purpose</h2></div>
-    <p class="sec-sub">Removing was the feature. Each line shipped to real buyers. Each is gone, with the rule that killed it.</p>
+    <div class="sec-h"><span class="sec-n">05</span><h2>What was removed, on purpose</h2></div>
+    <p class="sec-sub">Wrong data did not get rewritten. It got removed, with the rule that killed it.</p>
     <ul class="cut">
       <li>
-        <span class="k">The ask</span>
+        <span class="k">The ask field</span>
         <div>
           <p class="dead-q"><q>How do you currently ensure sales teams is interpreting her strategy and operations…</q></p>
-          <p class="alive">Built on the wrong person's data, with no reason to be the main question. <b>Replaced by one meeting objective</b>, per call, from the record.</p>
+          <p class="alive">A generated "best question" built on nothing. <b>Replaced by one meeting objective</b>, per call, from the record.</p>
         </div>
       </li>
       <li>
         <span class="k">Headcount fiction</span>
         <div>
-          <p class="dead-q"><q>A focused group of 10 to 15 sellers</q> — proposed to a founder who works alone.</p>
-          <p class="alive">Shipped word for word to two buyers. <span class="rep">Rule: team size comes from her profile or stays an open question.</span></p>
+          <p class="dead-q"><q>A focused group of 10 to 15 sellers</q> — to a founder who works alone.</p>
+          <p class="alive"><span class="rep">Rule: team size comes from the record or stays an open question.</span></p>
         </div>
       </li>
       <li>
-        <span class="k">Narration</span>
+        <span class="k">Invented numbers</span>
         <div>
-          <p class="dead-q"><q>[Context] When Soo describes her current GTM strategy, ask how she ensures consistency…</q> — twenty-two moves in this shape, in the live record.</p>
-          <p class="alive">Stage directions dressed as a script. <span class="rep">Replaced in the app: stage-grouped spoken lines plus named unknowns.</span></p>
+          <p class="dead-q"><q>Reduce the time spent on manual prep by 50% and increase your partnership close rates by 15%?</q></p>
+          <p class="alive"><span class="rep">Rule: no receipt, no sentence.</span> The new script says: "I would not give you an invented accuracy percentage."</p>
         </div>
       </li>
       <li>
-        <span class="k">The sticker</span>
+        <span class="k">The template read</span>
         <div>
-          <p class="dead-q"><q>PROBLEM · CHALLENGER</q> over a paragraph that could carry any label.</p>
-          <p class="alive">The technique was a tag on generic text. <span class="rep">Rule: method chosen first, by code, every block serves a step of it.</span></p>
+          <p class="dead-q">Near-identical DISC numbers for different humans, months apart.</p>
+          <p class="alive"><span class="rep">Rule: the read discriminates or it does not ship.</span> Three buyers, three different centers, from their own records.</p>
         </div>
       </li>
       <li>
         <span class="k">The build log</span>
         <div>
-          <p class="dead-q"><q>POST /api/parse · 2.9 s · 12,285 bytes</q> opened the document.</p>
-          <p class="alive">Fourteen pages, the buyer three pages in. <span class="rep">Replaced by one printable page.</span></p>
-        </div>
-      </li>
-      <li>
-        <span class="k">Shared script</span>
-        <div>
-          <p class="dead-q">18 lines identical between two buyers running different techniques. Nine full sentences, word for word.</p>
-          <p class="alive">The generator filled a template and changed the nouns. <span class="rep">Rule: repeated lines are counted defects. Target zero.</span></p>
+          <p class="dead-q"><q>POST /api/parse · 2.9 s · 12,285 bytes</q> opened the old document.</p>
+          <p class="alive">Fourteen pages. <span class="rep">Replaced by the script the rep reads: first move, stages, unknowns.</span></p>
         </div>
       </li>
     </ul>
@@ -396,22 +322,22 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
 
   <!-- ================= 05 · STANDARD ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">05</span><h2>The standard</h2></div>
+    <div class="sec-h"><span class="sec-n">06</span><h2>The standard</h2></div>
     <div class="std">
-      <div class="lbl">The standard · format is live, quality is still judged</div>
+      <div class="lbl">Format is live. Quality is still judged.</div>
       <ul>
-        <li>Format is live. Quality is still pending: a judge that reads, floor 88 of 100 per buyer, receipt quoted per note.</li>
-        <li>Zero identical spoken lines between buyers, counted on every generation.</li>
-        <li>Every number, headcount and percentage carries a source, or the sentence is not written.</li>
-        <li>One printable page per buyer, ready in the ninety seconds before the call.</li>
+        <li>The morning generation scored 32, 38 and 36 of 100 under a judge that reads. The evening record fixes the named defects: fabrication, example leak, shared lines.</li>
+        <li>Identical lines between buyers, measured after the fix: zero, in all three pairs.</li>
+        <li>The judge re-runs on this record. The floor is 88 of 100 per buyer, receipt quoted per note.</li>
+        <li>Nothing on this page claims a score. Fields are shown as they are, from the records.</li>
       </ul>
-      <p class="close">The guess is gone. What replaced it proves itself, every generation, against numbers.</p>
+      <p class="close">The data was always there. The bar it has to clear now is written down.</p>
     </div>
   </section>
 
   <footer>
-    <span>PitchGenius · pre-call &amp; enrichment change report · sample data preview</span>
-    <span>Old-side quotes are real artifacts. [SAMPLE] blocks await real generations.</span>
+    <span>PitchGenius · pre-call change report · then and now, from the records</span>
+    <span>Then-side quotes are real artifacts. Now-side is the live record. Judge score pending.</span>
   </footer>
 
 </div>
