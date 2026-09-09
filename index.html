@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pre-Call — the data, then → now</title>
+<title>Pre-call · the data, then → now</title>
 <meta name="description" content="The pre-call data existed all along. It was wrong. Same fields, compared: what they said then, what they say now.">
 <!--
   ============================================================================
-  CHANGE REPORT · SAME FIELDS, WRONG THEN, RIGHT NOW
+  CHANGE REPORT · DATA vs DATA · WHAT THE FIELD WAS vs WHAT IT IS
   ----------------------------------------------------------------------------
-  DATA SOURCES (both real):
-  THEN — deployed stage record (David Dressler, Aug 25) + the Sep 9 morning
-         generation as judged in pitch-genius-tests/m1-lab/JULGAMENTO-v1.md.
-  NOW  — local live record, Sep 9 11:46 (precalls.call_script for the three
-         buyers). No invented content on the now-side. Judge score still pending.
-  DATA-AGENT MANIFEST (ids for real-data updates):
-  #fm-old / #fm-soo / #fm-steve / #fm-jade   first moves (old example leak vs 3 real)
-  #ask-old / #ask-now                        the memorized ask
-  #tech-row / #disc-row / #obj-row / #fmt-row  table rows, then vs now
-  Never edit THEN-side quotes. NOW-side updates only from the live record.
+  FRAME (owner-approved): every field shown twice. Then (record) vs Now (record).
+  THEN, verbatim receipts, never edit:
+    deployed stage record, David Dressler, Aug 25
+    Soo / Steve / Jade generations as judged, Sep 9
+  NOW: [SAMPLE] blocks shaped on the new format, from the Sep 9 live record
+    (precalls.call_script). Real regenerated data replaces them via the README
+    protocol. Do not fabricate values. Do not drop the [SAMPLE] marker.
+  DATA-AGENT MANIFEST (ids):
+    #fm-row #ask-row #tech-row #obj-row #disc-row #fmt-row #enrich-row  table
+    #fm-old #fm-strip    first move pair
+    #ask-old #ask-now    the ask pair
   ============================================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,6 +55,8 @@ h1{font-family:var(--disp);font-size:clamp(30px,4.8vw,42px);line-height:1.1;marg
 h1 em{font-style:normal;background:var(--cta);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lede{color:var(--ink2);font-size:16px;max-width:62ch;margin:0}
 .lede b{color:var(--ink);font-weight:600}
+.why-line{font-size:13.5px;color:var(--ink2);max-width:70ch;margin:14px 0 0}
+.why-line b{color:var(--ink);font-weight:600}
 .src-note{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:14px}
 
 .sec{margin-bottom:52px}
@@ -74,13 +77,13 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 .fmt td.now{background:var(--teal-soft);width:40%}
 .fmt q{quotes:"“" "”";color:var(--ink)}
 .fmt .smp{font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;color:var(--warn);background:var(--warn-soft);border:1px solid var(--warn-line);border-radius:6px;padding:2px 7px;white-space:nowrap}
-.fmt .live{font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;color:var(--teal);background:var(--teal-soft);border:1px solid var(--teal-line);border-radius:6px;padding:2px 7px;white-space:nowrap}
 .fmt td .m{display:block;margin-top:6px;font-size:12px;color:var(--ink3)}
 
 /* ---------- deep pairs ---------- */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-bottom:16px}
 .cell{border-radius:var(--r);padding:20px 24px;display:flex;flex-direction:column}
 .cell .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.cell .lbl .smp{margin-left:6px}
 .was{background:var(--bad-soft);border:1px solid var(--bad-line)}
 .was .lbl{color:var(--bad)}
 .now{background:var(--teal-soft);border:1px solid var(--teal-line)}
@@ -90,19 +93,17 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 .why{font-size:13.5px;color:var(--ink2);margin:auto 0 0;padding-top:10px;border-top:1px dashed rgba(15,23,42,.1)}
 .why b{font-weight:600;color:var(--ink)}
 
-/* buyers strip (real first moves) */
-.brow{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 26px;margin-bottom:10px}
-.brow .bh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
-.brow .bname{font-family:var(--disp);font-weight:700;font-size:16.5px}
-.brow .bco{color:var(--ink3);font-size:13px}
-.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.8px;padding:5px 11px;border-radius:999px;border:1px solid}
+/* per-buyer opener strip (inside the now cell) */
+.stack{display:grid;gap:10px;margin-top:2px}
+.mini{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r-md);padding:13px 16px}
+.mini .mh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+.mini .nm{font-family:var(--disp);font-weight:700;font-size:14px}
+.mini .co{color:var(--ink3);font-size:12px}
+.mini .bq{font-size:13.5px;color:var(--ink2);margin:0}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.8px;padding:4px 11px;border-radius:999px;border:1px solid}
 .tag .d{width:7px;height:7px;border-radius:50%;background:currentColor}
 .tag.chal{color:var(--chal);border-color:var(--chal-line);background:var(--chal-soft);margin-left:auto}
 .tag.nepq{color:var(--nepq);border-color:var(--nepq-line);background:var(--nepq-soft);margin-left:auto}
-.brow .bq{font-size:15px;color:var(--ink2);margin:0}
-.brow .bq em{font-style:normal;color:var(--ink);font-weight:500}
-.brow .bmeta{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:8px}
-.brow .bmeta b{color:var(--ink2);font-weight:500}
 
 /* removals */
 .cut{list-style:none;margin:0;padding:0}
@@ -122,7 +123,9 @@ h2{font-family:var(--disp);font-size:22px;margin:0;font-weight:700;letter-spacin
 .std li{margin:5px 0}
 .std .close{margin:14px 0 0;padding-top:14px;border-top:1px dashed var(--warn-line);color:var(--ink);font-weight:600;font-size:15.5px}
 
-footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+footer .src{font-family:var(--mono);font-size:11.5px;line-height:1.9}
+footer .legend{max-width:44ch}
 
 @media(max-width:760px){
   .pair{grid-template-columns:1fr}
@@ -143,59 +146,60 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
 
   <header class="top">
     <div class="brand"><span class="dot"></span>PitchGenius <span class="crumb">· Pre-call, then → now</span></div>
-    <span class="badge">Live records · quality judged pending</span>
+    <span class="badge">Then: records · Now: samples, regen pending</span>
   </header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="eyebrow">Change report · the pre-call data</div>
     <h1>The data was always there. <em>It was just wrong.</em></h1>
-    <p class="lede">The pre-call never lacked data. Every field below existed then and exists now. What changed is that the values stopped being invented, templated or borrowed from the prompt. <b>Same fields, side by side: what they said then, what they say now.</b></p>
-    <p class="src-note">then: deployed record (Aug 25) + the Sep 9 morning generation, as judged · now: live record, Sep 9 11:46</p>
+    <p class="lede">The pre-call never lacked fields. First move, ask, technique, objective, DISC read, format, enrichment. All seven existed then and exist now. What changed is the value in each one. <b>Same fields, side by side: what they said then, what they say now, each traced to a record.</b></p>
+    <p class="why-line"><b>Why it stayed broken:</b> the example lived in the prompt, unanchored, and regex rubrics kept scoring the output green. Reading it was the only detector.</p>
+    <p class="src-note">then: deployed stage record, Aug 25 · judged generations, Sep 9 &nbsp;·&nbsp; now: live record, Sep 9</p>
   </section>
 
   <!-- ================= 01 · THE FIELDS ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">01</span><h2>Same fields, then → now</h2></div>
-    <p class="sec-sub">Six fields the product already had. Read one row as one before-and-after.</p>
+    <div class="sec-h"><span class="sec-n">01</span><h2>The fields, then → now</h2></div>
+    <p class="sec-sub">Seven fields the product already had. Read one row as one before-and-after. Then-side quotes are verbatim.</p>
 
     <table class="fmt">
-      <thead><tr><th></th><th class="then">Then · what it said</th><th class="now">Now · what it says</th></tr></thead>
+      <thead><tr><th>Field</th><th class="then">Then · record</th><th class="now">Now · record</th></tr></thead>
       <tbody>
         <tr id="fm-row">
           <td class="field">First move</td>
-          <td class="then"><q>When he answers what made the call worth taking, name it back once and hold it for the close.</q><span class="m">The prompt's own worked example, shipped as the first move of every buyer. Confirmed in the deployed record, months apart.</span></td>
-          <td class="now"><q>Soo, thanks for making the time. Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…</q><span class="live">LIVE</span><span class="m">Three buyers, three different first moves, each from the buyer's own record.</span></td>
+          <td class="then"><q>When he answers what made the call worth taking, name it back once and hold it for the close.</q><span class="m">The prompt's own example, shipped as every buyer's first move. Receipt: David Dressler, deployed stage record, Aug 25. Same line again in the Soo, Steve and Jade generations judged Sep 9.</span></td>
+          <td class="now"><q>Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…</q> <span class="smp">[SAMPLE]</span><span class="m">Buyer-specific openers naming the buyer's own ventures and history.</span></td>
         </tr>
         <tr id="ask-row">
           <td class="field">The ask</td>
-          <td class="then"><q>A focused group of 10 to 15 sellers</q> — proposed to a founder who works alone. Word for word identical between two buyers.<span class="m">A checkable lie at the highest-stakes moment of the call.</span></td>
-          <td class="now"><q>Which of her ventures (The Ark, ARIA, or LoneStarAscent.AI) she would consider for a pilot.</q><span class="live">LIVE</span><span class="m">Scoped to what the record supports. No headcount invented.</span></td>
+          <td class="then"><q>one frontline manager, a focused group of 10 to 15 sellers…</q><span class="m">Proposed to solo founders. Byte-identical between two different buyers. Receipts: the Sep 9 judged generations.</span></td>
+          <td class="now"><q>Which of your ventures would be the most impactful place to test this?</q> <span class="smp">[SAMPLE]</span><span class="m">Pilot scoped to the buyer's named ventures and role. No headcount invented.</span></td>
         </tr>
         <tr id="tech-row">
           <td class="field">Technique footprint</td>
-          <td class="then">"CHALLENGER" as a tag on generic text. 18 lines identical between a Challenger buyer and an NEPQ buyer.<span class="m">The technique changed the label, never the words.</span></td>
-          <td class="now">Two different ladders in the record: Challenger runs Context → Commitment, NEPQ runs Connect → Commitment. Identical lines between buyers, measured this morning: <b>zero, in all three pairs.</b><span class="live">LIVE</span></td>
+          <td class="then">"CHALLENGER" as a tag on generic text. 18 identical lines between a Challenger buyer and an NEPQ buyer. David's moves: an untagged 11,177-character wall.</td>
+          <td class="now">Two different ladders: Challenger runs 6 stages, NEPQ runs its own 6. Zero pairwise overlap between buyers. <span class="smp">[SAMPLE]</span></td>
         </tr>
         <tr id="obj-row">
           <td class="field">Objective</td>
-          <td class="then"><q>Secure a controlled paid pilot or a clearly defined technical and commercial next step.</q><span class="m">The same formula, deployed across buyers, months apart.</span></td>
-          <td class="now"><q>Name which of her ventures she would pilot first</q> · <q>what would need to be proven</q> · three buyers, three different objectives.<span class="live">LIVE</span></td>
-        </tr>
-        <tr id="choice-row">
-          <td class="field">Technique choice</td>
-          <td class="then">Scores existed and were decorative. The script stayed identical under any tag; the stated reason was template prose about a "commercially-minded individual."<span class="m">Right answer chosen, then ignored.</span></td>
-          <td class="now">Challenger 85 for Soo, 90 for Steve, NEPQ 85 for Jade — different winners, real margins, and the reason cites the buyer: Jade "has been sold to extensively… NEPQ lets the buyer articulate their own problems."<span class="live">LIVE</span></td>
+          <td class="then"><q>Secure a controlled paid pilot or a clearly defined technical and commercial next step.</q><span class="m">The template formula. Receipt: David record, Aug 25, same formula shape as the local buyers.</span></td>
+          <td class="now">Three different, falsifiable objectives, one per buyer, each checkable on the call. <span class="smp">[SAMPLE]</span></td>
         </tr>
         <tr id="disc-row">
           <td class="field">DISC read</td>
-          <td class="then">Near-default numbers for different humans: two records, months apart, differ by one axis point.<span class="m">The read discriminated nothing.</span></td>
-          <td class="now">Soo D80·I70 · Steve D85·I70 · Jade I75 — three different centers, from their own records.<span class="live">LIVE</span></td>
+          <td class="then">Near-default numbers. David C75·D80·I60·S40, Aug 25. Soo C75·D80·I70·S40, Sep 9. Different humans, months apart, 3 of 4 values identical.</td>
+          <td class="now">Distinct per buyer: a D-center read here, an I-center read there, from each profile. <span class="smp">[SAMPLE]</span></td>
         </tr>
         <tr id="fmt-row">
           <td class="field">Format</td>
-          <td class="then">11,177 characters. Moves as untagged narration, quotes in one run, the opening buried forty lines down.<span class="m">Read it or fail. No skimming.</span></td>
-          <td class="now">First move on top, lines grouped under the stage they serve, four named unknowns. Skimmable in ninety seconds.<span class="live">LIVE</span></td>
+          <td class="then">An 11,177-character prose wall. Moves untagged, quotes in one run.</td>
+          <td class="now">First move on top, stage-labeled speakable lines, open questions named. <span class="smp">[SAMPLE]</span></td>
+        </tr>
+        <tr id="enrich-row">
+          <td class="field">The buyer underneath</td>
+          <td class="then">Wrong-person enrichment: the <q>Nicholas</q> namesake bug. The profile described another man with the same name.</td>
+          <td class="now">CRM-calibrated search, exact-name matching. <span class="smp">[SAMPLE]</span></td>
         </tr>
       </tbody>
     </table>
@@ -204,82 +208,56 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
   <!-- ================= 02 · FIRST MOVE IN FULL ================= -->
   <section class="sec">
     <div class="sec-h"><span class="sec-n">02</span><h2>The first move, in full</h2></div>
-    <p class="sec-sub">The clearest single failure, and the clearest fix. Then: one line for everyone, borrowed from the prompt itself. Now: three lines, one per buyer, each anchored in their record.</p>
+    <p class="sec-sub">The clearest single failure, and the fix. Then: one borrowed line for everyone. Now: one opener per buyer, each anchored in that buyer's record.</p>
 
     <div class="pair">
       <div class="cell was" id="fm-old">
         <div class="lbl">Then · every buyer, for months</div>
-        <p class="quote">"When he answers what made the call worth taking, name it back once and hold it for the close."<footer>Deployed record, Aug 25. Judged generation, Sep 9. Same first line.</footer></p>
+        <p class="quote">"When he answers what made the call worth taking, name it back once and hold it for the close."<footer>Receipt: deployed stage record, David Dressler, Aug 25. Same line again in the judged generations, Sep 9.</footer></p>
         <p class="why"><b>What was wrong:</b> it is the prompt's demonstration sentence with the pronoun swapped. Not written for anyone.</p>
       </div>
-      <div class="cell now">
-        <div class="lbl">Now · from each record <span style="color:var(--teal)">· live</span></div>
-        <p class="quote">Soo: "Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…"</p>
-        <p class="quote">Steve: "Given your background at MIT, Monster, and now building LoneStarAscent.AI…"<footer>Jade: "From Juicebox to Google Gemini, and especially your success with those newsletter brands."</footer></p>
+      <div class="cell now" id="fm-strip">
+        <div class="lbl">Now · one opener per buyer <span class="smp">[SAMPLE]</span></div>
+        <div class="stack">
+          <div class="mini">
+            <div class="mh"><span class="nm">Soo Horobin</span><span class="co">The Ark · founder, runs it alone</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
+            <p class="bq">"Given your work building revenue from scratch across ventures like The Ark, ARIA, and LoneStarAscent.AI…"</p>
+          </div>
+          <div class="mini">
+            <div class="mh"><span class="nm">Steve Deeb</span><span class="co">LoneStarAscent.AI · technical founder</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
+            <p class="bq">"Given your background at MIT, Monster, and now building LoneStarAscent.AI…"</p>
+          </div>
+          <div class="mini">
+            <div class="mh"><span class="nm">Jade Bodkhe</span><span class="co">Lonestar Ascent AI · same company as Steve</span><span class="tag nepq"><span class="d"></span>NEPQ</span></div>
+            <p class="bq">"From Juicebox to Google Gemini, and especially your success with those newsletter brands."</p>
+          </div>
+        </div>
         <p class="why"><b>Why it is right:</b> three different humans, three different openings, each checkable against the buyer's own profile.</p>
       </div>
     </div>
-
-    <div class="brow">
-      <div class="bh"><span class="bname">Soo Horobin</span><span class="bco">The Ark · founder, runs it alone</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
-      <p class="bq"><em>Challenger arc:</em> Context → Insight/Reframe → Business Impact → New Way → Solution Relevance → Commitment. Twelve spoken lines, four named unknowns.</p>
-      <div class="bmeta">objective: name which venture to pilot · read: <b>D80·I70</b></div>
-    </div>
-    <div class="brow">
-      <div class="bh"><span class="bname">Steve Deeb</span><span class="bco">LoneStarAscent.AI · technical founder</span><span class="tag chal"><span class="d"></span>Challenger</span></div>
-      <p class="bq"><em>Same method, different words.</em> Eleven spoken lines. Zero lines shared with Soo.</p>
-      <div class="bmeta">objective: what would need to be proven · read: <b>D85·I70</b></div>
-    </div>
-    <div class="brow">
-      <div class="bh"><span class="bname">Jade Bodkhe</span><span class="bco">Lonestar Ascent AI · same company as Steve</span><span class="tag nepq"><span class="d"></span>NEPQ</span></div>
-      <p class="bq"><em>NEPQ arc, her own ladder:</em> Connect → Situation → Problem Awareness → Solution Awareness → Consequence → Commitment. Questions lead. No teaching pitch.</p>
-      <div class="bmeta">objective: what would need to be proven · read: <b>I75</b></div>
-    </div>
   </section>
 
-  <!-- ================= 03 · THE RIGHT METHOD ================= -->
+  <!-- ================= 03 · THE ASK ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">03</span><h2>The right method for each buyer</h2></div>
-    <p class="sec-sub">Technique-first only counts if the technique is chosen well and then actually used. Both halves now have receipts: the scores discriminate, the reason cites the buyer, and the script runs the winner.</p>
-
-    <div class="brow">
-      <div class="bh"><span class="bname">Soo Horobin</span><span class="bco">The Ark</span><span class="tag chal"><span class="d"></span>Challenger 85 · 2nd SPIN 70</span></div>
-      <p class="bq"><em>Why, from her record:</em> "A visionary founder with a strong focus on GTM strategy and RevOps, indicating a commercial mindset open to new insights and challenging existing norms."</p>
-      <div class="bmeta">challenger 85 · hybrid 75 · spin 70 · nepq 60 — and the script runs all six Challenger stages</div>
-    </div>
-    <div class="brow">
-      <div class="bh"><span class="bname">Steve Deeb</span><span class="bco">LoneStarAscent.AI</span><span class="tag chal"><span class="d"></span>Challenger 90 · 2nd NEPQ 75</span></div>
-      <p class="bq"><em>Why, from his record:</em> "A confident, commercially-minded founder with a strong technical background… will respond well to a reframe of his perception."</p>
-      <div class="bmeta">challenger 90 · nepq 75 · hybrid 70 · spin 60 — same company as Jade, different method</div>
-    </div>
-    <div class="brow">
-      <div class="bh"><span class="bname">Jade Bodkhe</span><span class="bco">Lonestar Ascent AI</span><span class="tag nepq"><span class="d"></span>NEPQ 85 · 2nd hybrid 75</span></div>
-      <p class="bq"><em>Why, from her record:</em> "A founding marketer, growth specialist and newsletter entrepreneur… she has been sold to extensively and is likely skeptical of traditional pitches. NEPQ lets the buyer articulate their own problems."</p>
-      <div class="bmeta">nepq 85 · hybrid 75 · challenger 70 · spin 60 — questions lead, no teaching pitch</div>
-    </div>
-  </section>
-
-  <!-- ================= 04 · THE ASK ================= -->
-  <section class="sec">
-    <div class="sec-h"><span class="sec-n">04</span><h2>The ask, in full</h2></div>
-    <p class="sec-sub">The line the rep memorizes. Then: an invented sales org. Now: scoped to the record.</p>
+    <div class="sec-h"><span class="sec-n">03</span><h2>The ask, in full</h2></div>
+    <p class="sec-sub">The line the rep memorizes. Then: an invented sales org. Now: scoped to what the record supports.</p>
     <div class="pair">
       <div class="cell was" id="ask-old">
         <div class="lbl">Then · real output, all three buyers</div>
-        <p class="quote">"I would recommend one frontline manager, a focused group of 10 to 15 sellers, defined opportunities, your existing process, and mutually agreed success criteria."<footer>Her own file says she runs three ventures alone.</footer></p>
-        <p class="why"><b>What was wrong:</b> headcount invented, identical between two buyers, checkable from a LinkedIn title in five seconds.</p>
+        <p class="quote">"I would recommend one frontline manager, a focused group of 10 to 15 sellers, defined opportunities, your existing process, and mutually agreed success criteria."<footer>Receipt: judged generations, Sep 9, byte-identical between two buyers. Her own file says she runs three ventures alone.</footer></p>
+        <p class="why"><b>What was wrong:</b> headcount invented, identical between buyers, checkable from a title in five seconds.</p>
       </div>
       <div class="cell now" id="ask-now">
-        <div class="lbl">Now · from the record <span style="color:var(--teal)">· live</span></div>
-        <p class="quote">"Which of your ventures — The Ark, ARIA, or LoneStarAscent.AI — would be the most impactful place to test this, and what would need to be true for you to approve it?"</p>
-        <p class="why"><b>Why it is right:</b> the ask names her actual ventures and defers the shape of the pilot to her answer. Nothing asserted that the record does not support.</p>
+        <div class="lbl">Now · scoped to the record <span class="smp">[SAMPLE]</span></div>
+        <p class="quote">"Which of your ventures, The Ark, ARIA or LoneStarAscent.AI, would be the most impactful place to test this, and what would need to be true for you to approve it?"</p>
+        <p class="why"><b>Why it is right:</b> the ask names her actual ventures and defers the pilot shape to her answer.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= 04 · REMOVED ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">05</span><h2>What was removed, on purpose</h2></div>
+    <div class="sec-h"><span class="sec-n">04</span><h2>Removed on purpose</h2></div>
     <p class="sec-sub">Wrong data did not get rewritten. It got removed, with the rule that killed it.</p>
     <ul class="cut">
       <li>
@@ -292,7 +270,7 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
       <li>
         <span class="k">Headcount fiction</span>
         <div>
-          <p class="dead-q"><q>A focused group of 10 to 15 sellers</q> — to a founder who works alone.</p>
+          <p class="dead-q"><q>A focused group of 10 to 15 sellers</q>, proposed to a founder who works alone.</p>
           <p class="alive"><span class="rep">Rule: team size comes from the record or stays an open question.</span></p>
         </div>
       </li>
@@ -307,7 +285,7 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
         <span class="k">The template read</span>
         <div>
           <p class="dead-q">Near-identical DISC numbers for different humans, months apart.</p>
-          <p class="alive"><span class="rep">Rule: the read discriminates or it does not ship.</span> Three buyers, three different centers, from their own records.</p>
+          <p class="alive"><span class="rep">Rule: the read discriminates or it does not ship.</span> Each buyer gets a read from their own profile.</p>
         </div>
       </li>
       <li>
@@ -322,7 +300,7 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
 
   <!-- ================= 05 · STANDARD ================= -->
   <section class="sec">
-    <div class="sec-h"><span class="sec-n">06</span><h2>The standard</h2></div>
+    <div class="sec-h"><span class="sec-n">05</span><h2>The standard</h2></div>
     <div class="std">
       <div class="lbl">Format is live. Quality is still judged.</div>
       <ul>
@@ -336,8 +314,9 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
   </section>
 
   <footer>
-    <span>PitchGenius · pre-call change report · then and now, from the records</span>
-    <span>Then-side quotes are real artifacts. Now-side is the live record. Judge score pending.</span>
+    <span>PitchGenius · pre-call change report · the data, then → now</span>
+    <span class="src">then: deployed stage record, Aug 25 · judged generations, Sep 9<br>now: live record, Sep 9</span>
+    <span class="legend">[SAMPLE] marks a now-side value shown in the new format. The regenerated record replaces it. Then-side quotes are verbatim artifacts.</span>
   </footer>
 
 </div>
