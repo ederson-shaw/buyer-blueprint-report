@@ -72,7 +72,7 @@ h1 .now{background:var(--cta);-webkit-background-clip:text;background-clip:text;
 .lede b{color:var(--ink);font-weight:600}
 .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .pillar{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:10px 16px;font-family:var(--disp);font-weight:600;font-size:14px}
-.pillar i{width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none;font-style:normal}
+.pillar b{flex:none;font-size:15px}
 
 /* sections */
 .sec{margin-bottom:52px}
@@ -194,18 +194,18 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
   <section class="hero">
     <div class="eyebrow">Change report · pre-call &amp; enrichment</div>
     <h1><span class="was">A document about the buyer.</span><br>Now, <span class="now">a brief that runs the call.</span></h1>
-    <p class="lede">This page shows what changed. Every section is a comparison: <b>the real thing the rep got before, next to what they get now.</b> Old side is untouched evidence. New side is marked [SAMPLE] until real generations land.</p>
+    <p class="lede">This page shows what changed. Every section is a comparison: <b>the real thing the rep got before, next to what they get now.</b> The core change: <b>the method is chosen first, and the script is written inside it</b>, step by step, by code that enforces the order. Old side is untouched evidence. New side is marked [SAMPLE] until real generations land.</p>
     <div class="pillars">
-      <span class="pillar"><i></i>Right person, by design</span>
-      <span class="pillar"><i></i>Script written inside the method</span>
-      <span class="pillar"><i></i>One page, every fact with a receipt</span>
+      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">1</b>Technique chosen first, and locked</span>
+      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">2</b>Script written inside it</span>
+      <span class="pillar"><b style="color:var(--teal);font-family:var(--disp)">3</b>One page, every fact with a receipt</span>
     </div>
   </section>
 
   <!-- ================= 01 · THE BRIEF ================= -->
   <section class="sec">
     <div class="sec-h"><span class="sec-n">01</span><h2>The buyer brief, before → after</h2></div>
-    <p class="sec-sub">Same buyer, same CRM import. Left: everything the rep saw before. Right: the brief now. Read the big line first, it is the product.</p>
+    <p class="sec-sub">Same buyer, same CRM import. Left: everything the rep saw before. Right: the brief now. The order is the product: technique is picked first and locked, then every block of the script serves one step of it. Read the big line first.</p>
 
     <div class="ba">
       <div>
@@ -300,11 +300,11 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
         <p class="why">Stage directions about the call. Twenty-eight in a list. Nothing to say out loud.</p>
       </div>
       <div class="cell now">
-        <div class="lbl">After · the shape [SAMPLE]</div>
+        <div class="lbl">After · technique-first [SAMPLE]</div>
         <div class="mini-arc">
           <span class="stage"><b>1</b>Context</span><span class="stage"><b>2</b>Insight / reframe</span><span class="stage"><b>3</b>Business impact</span><span class="stage"><b>4</b>New way</span><span class="stage"><b>5</b>Solution relevance</span><span class="stage"><b>6</b>Commitment</span>
         </div>
-        <p class="why"><b>Why it is better:</b> every block says which step of the method it serves. The script runs the technique, not a template.</p>
+        <p class="why"><b>Why it is better:</b> the technique is picked first and locked by code. Every block serves one of its steps. The script runs the technique, not a template.</p>
       </div>
     </div>
   </section>
@@ -371,7 +371,7 @@ footer{border-top:1px solid var(--stroke);padding-top:24px;color:var(--ink3);fon
         <span class="k">The sticker</span>
         <div>
           <p class="dead-q"><q>PROBLEM · CHALLENGER</q> over a paragraph that could carry any label.</p>
-          <p class="alive">The technique never changed the conversation's shape. <span class="rep">Rule: method first, every block serves a step of it.</span></p>
+          <p class="alive">The technique was a tag on generic text. <span class="rep">Rule: method chosen first, by code, every block serves a step of it.</span></p>
         </div>
       </li>
       <li>
